@@ -185,7 +185,6 @@ def build_support(data, lang, langs):
         html += REDIRECT % (json.dumps(others), SOURCE_LANG, "/compressive/", "")
     html += masthead(data, lang, "", langs)
 
-    m = s["meter"]
     faq = "\n".join(
         f"""      <div>
         <h3>{esc(item['q'])}</h3>
@@ -194,45 +193,17 @@ def build_support(data, lang, langs):
         for item in s["faq"]
     )
 
+    # No hero, and deliberately: this is the page a customer reaches when
+    # something is wrong, and Apple's own support pages open with the heading and
+    # get on with it. A headline and a chart here read as an app selling itself
+    # to somebody who has already bought it.
     html += f"""
   <div class="hero">
-    <p class="eyebrow">{esc(s['eyebrow'])}</p>
     <h1>{esc(s['h1'])}</h1>
     <p class="lede">{inline(s['lede'])}</p>
-
-    <div class="meter">
-      <div class="meter-row">
-        <div class="meter-label">
-          <span>{esc(m['before_label'])}</span>
-          <b class="num">{esc(m['before_size'])}</b>
-        </div>
-        <div class="track">
-          <div class="fill picture" style="--w:{m['ratio']}"></div>
-          <div class="fill padding" style="--from:{m['ratio']}; --w:100%"></div>
-        </div>
-      </div>
-
-      <div class="meter-row">
-        <div class="meter-label">
-          <span>{esc(m['after_label'])}</span>
-          <b class="num">{esc(m['after_size'])}</b>
-        </div>
-        <div class="track">
-          <div class="fill picture" style="--w:{m['ratio']}"></div>
-        </div>
-      </div>
-
-      <div class="legend">
-        <span><i class="k-picture"></i> {esc(m['key_picture'])}</span>
-        <span><i class="k-padding"></i> {esc(m['key_padding'])}</span>
-      </div>
-
-      <p class="verdict">{inline(m['verdict'])}</p>
-    </div>
   </div>
 
   <section>
-    <h2>{esc(s['support_h2'])}</h2>
     <p class="narrow">{inline(s['support_body'])}</p>
     <p class="narrow small">{inline(s['support_hint'])}</p>
   </section>

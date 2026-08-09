@@ -7,9 +7,9 @@
    privacy policy should look like a document, and a support page should look
    like Apple's.
 
-   The one piece of colour is the app's own: blue is the picture you keep,
-   hatched orange is the padding you don't. That is the product's idea, not an
-   ornament, so it stays. */
+   There is no hero and no illustration on either page, deliberately. Both are
+   reached by somebody who already has the app and wants an answer; a headline
+   selling the product to them is noise at best. */
 
 :root {
   color-scheme: light dark;
@@ -20,12 +20,6 @@
   --muted:     #6e6e73;
   --rule:      #d2d2d7;
   --link:      #0066cc;
-
-  --picture:   #0066cc;
-  --padding:   #d9761f;
-
-  --hatch-hi:  38%;
-  --hatch-lo:  13%;
 
   --content:   980px;
   --measure:   692px;
@@ -39,12 +33,6 @@
     --muted:   #86868b;
     --rule:    #424245;
     --link:    #2997ff;
-
-    --picture: #2997ff;
-    --padding: #f0975a;
-
-    --hatch-hi: 72%;
-    --hatch-lo: 20%;
   }
 }
 
@@ -116,8 +104,6 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: -0.01em;
 }
 
-.num { font-variant-numeric: tabular-nums; }
-
 a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -178,71 +164,6 @@ section { padding: 3rem 0; border-top: 1px solid var(--rule); }
 .app h3 { margin-bottom: .25rem; }
 .app .small { display: block; margin-top: .75rem; color: var(--link); }
 
-/* ------------------------------------------------- picture vs padding bars */
-
-.meter { margin-top: 2.25rem; max-width: var(--measure); }
-
-.meter-row { margin-bottom: 1rem; }
-.meter-row:last-of-type { margin-bottom: 0; }
-
-.meter-label {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: .875rem;
-  color: var(--muted);
-  margin-bottom: .35rem;
-}
-.meter-label b { font-weight: 600; color: var(--ink); }
-
-.track {
-  position: relative;
-  height: 2rem;
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--bg-alt);
-}
-
-.fill {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--w);
-  border-radius: 8px;
-  background: var(--picture);
-}
-
-.fill.padding {
-  left: var(--from);
-  width: calc(var(--w) - var(--from));
-  border-radius: 0 8px 8px 0;
-  background: repeating-linear-gradient(
-    -45deg,
-    color-mix(in srgb, var(--padding) var(--hatch-hi), transparent) 0 4px,
-    color-mix(in srgb, var(--padding) var(--hatch-lo), transparent) 4px 8px
-  );
-}
-
-.legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-top: .85rem;
-  font-size: .875rem;
-  color: var(--muted);
-}
-.legend span { display: inline-flex; align-items: center; gap: .4rem; }
-.legend i { width: .65rem; height: .65rem; border-radius: 2px; display: inline-block; }
-.legend .k-picture { background: var(--picture); }
-.legend .k-padding {
-  background: repeating-linear-gradient(-45deg,
-    color-mix(in srgb, var(--padding) var(--hatch-hi), transparent) 0 3px,
-    color-mix(in srgb, var(--padding) var(--hatch-lo), transparent) 3px 6px);
-}
-
-.verdict { margin-top: 1.25rem; font-size: .875rem; line-height: 1.43; color: var(--muted); }
-.verdict b { color: var(--ink); font-weight: 600; }
-
 /* --------------------------------------------------------------------- faq */
 
 .faq > div { padding: 1.25rem 0; border-top: 1px solid var(--rule); }
@@ -267,8 +188,6 @@ section { padding: 3rem 0; border-top: 1px solid var(--rule); }
   letter-spacing: -0.015em;
   margin: 0 0 1.5rem;
 }
-
-.divider { border: 0; border-top: 1px solid var(--rule); margin: 4rem 0 0; }
 
 /* ------------------------------------------------------------------ footer */
 

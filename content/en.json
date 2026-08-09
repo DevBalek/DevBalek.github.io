@@ -22,22 +22,9 @@
   "support": {
     "title": "Compressive — Support",
     "description": "Compressive frees up space on your iPhone by re-packing your videos. Same resolution, same frames, a fraction of the size.",
-    "eyebrow": "iPhone · Storage",
-    "h1": "Most of a video isn’t picture. It’s padding.",
-    "lede": "Your camera records in a hurry, and filming leaves no time to pack files well. Compressive takes the time your camera couldn’t — same resolution, same frames, a fraction of the size.",
+    "h1": "Support",
+    "lede": "Compressive frees up space on your iPhone by re-packing your videos — same resolution, same frames, a fraction of the size.",
 
-    "meter": {
-      "ratio": "30.1%",
-      "before_label": "Straight off the camera",
-      "before_size": "35.2 MB",
-      "after_label": "After Compressive",
-      "after_size": "10.6 MB",
-      "key_picture": "The picture itself",
-      "key_padding": "Padding added in a rush",
-      "verdict": "A real 4K 60 fps clip, re-encoded with the Balanced preset. **70% smaller.** Every pixel kept — and the app shows you both versions side by side before anything is replaced."
-    },
-
-    "support_h2": "Support",
     "support_body": "Questions, bug reports, feature requests — write to [support@compressive.app](mailto:support@compressive.app). Replies usually come within a couple of days.",
     "support_hint": "If you are reporting a problem, it helps to include your iPhone model, your iOS version, and what you were doing when it happened.",
 
