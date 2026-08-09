@@ -12,29 +12,11 @@
 </head>
 <body>
 <div class="wrap">
-<script>
-(function () {
-  try {
-    if (location.search.indexOf('hl=') !== -1) return;
-    if (sessionStorage.getItem('hl')) return;
-    var published = ["tr"];
-    var preferred = navigator.languages || [navigator.language || ''];
-    for (var i = 0; i < preferred.length; i++) {
-      var code = String(preferred[i]).toLowerCase().split('-')[0];
-      if (code === 'en') return;
-      if (published.indexOf(code) !== -1) {
-        location.replace('/compressive/' + code + '/privacy/');
-        return;
-      }
-    }
-  } catch (e) {}
-})();
-</script>
   <div class="masthead">
     <a class="wordmark" href="/compressive/">Compressive</a>
     <nav class="langs" aria-label="Language">
-      <a href="/compressive/privacy/?hl=en" aria-current="page">EN</a>
-      <a href="/compressive/tr/privacy/?hl=tr">TR</a>
+      <a href="/compressive/privacy/" aria-current="page">EN</a>
+      <a href="/compressive/tr/privacy/">TR</a>
     </nav>
   </div>
 

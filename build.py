@@ -71,31 +71,22 @@ FOOT = """
 </html>
 """
 
-# Web visitors who arrive from the App Store get no language hint from anywhere,
-# so this is the one place the site has to guess. It only ever runs on the
-# canonical English page, only ever hops once (the translated pages carry no
-# script), and stands down the moment the visitor states a preference — the
-# switcher links carry `?hl=`. Customers who arrive from the app never reach it:
-# the app knows its own language and links straight to the right page.
-REDIRECT = """<script>
-(function () {
-  try {
-    if (location.search.indexOf('hl=') !== -1) return;
-    if (sessionStorage.getItem('hl')) return;
-    var published = %s;
-    var preferred = navigator.languages || [navigator.language || ''];
-    for (var i = 0; i < preferred.length; i++) {
-      var code = String(preferred[i]).toLowerCase().split('-')[0];
-      if (code === '%s') return;
-      if (published.indexOf(code) !== -1) {
-        location.replace('%s' + code + '/%s');
-        return;
-      }
-    }
-  } catch (e) {}
-})();
-</script>
-"""
+# There is deliberately no browser-language redirect, and so no JavaScript on
+# either page.
+#
+# There was one. It read `navigator.languages` on the canonical English page and
+# sent a Turkish browser to `/tr/` — which then needs a way to remember that a
+# visitor who clicks "EN" meant it, or clicking EN bounces them straight back.
+# That marker was `?hl=`, hung off every switcher link, and it sat in the address
+# bar of a privacy policy forever after.
+#
+# The redirect was buying very little. Customers who arrive from the app never
+# needed it: `LegalLinks` picks the language and links straight to the right
+# page. Search engines do not need it either — that is what the `hreflang` set
+# in `head()` is for, and it is the mechanism they actually honour. What was
+# left was somebody pasting the bare English URL with a Turkish browser, who now
+# reads one heading in English and clicks "TR". One click, against a script, a
+# query parameter on every link, and a loop to get wrong.
 
 
 def page_url(lang, page, absolute=False):
@@ -106,8 +97,7 @@ def page_url(lang, page, absolute=False):
 
 
 def masthead(data, lang, page, langs):
-    """Wordmark plus the language switcher. Each switcher link carries `?hl=`,
-    which is what tells the redirect above that the visitor has chosen.
+    """Wordmark plus the language switcher.
 
     The wordmark is an absolute address rather than a count of `../`: from the
     Turkish policy the relative walk lands on `/compressive/`, which is the
@@ -116,7 +106,7 @@ def masthead(data, lang, page, langs):
     items = []
     for code in langs:
         label = LANG_LABELS.get(code, code.upper())
-        href = page_url(code, page) + "?hl=" + code
+        href = page_url(code, page)
         current = ' aria-current="page"' if code == lang else ""
         items.append(f'      <a href="{href}"{current}>{label}</a>')
     links = "\n".join(items)
@@ -180,9 +170,6 @@ def build_support(data, lang, langs):
     s = data["support"]
     depth = 1 if lang == SOURCE_LANG else 2
     html = head(s["title"], s["description"], depth, lang, "", langs)
-    if lang == SOURCE_LANG:
-        others = [c for c in langs if c != SOURCE_LANG]
-        html += REDIRECT % (json.dumps(others), SOURCE_LANG, "/compressive/", "")
     html += masthead(data, lang, "", langs)
 
     faq = "\n".join(
@@ -223,9 +210,6 @@ def build_privacy(data, lang, langs):
     p = data["privacy"]
     depth = 2 if lang == SOURCE_LANG else 3
     html = head(p["title"], p["description"], depth, lang, "privacy/", langs)
-    if lang == SOURCE_LANG:
-        others = [c for c in langs if c != SOURCE_LANG]
-        html += REDIRECT % (json.dumps(others), SOURCE_LANG, "/compressive/", "privacy/")
     html += masthead(data, lang, "privacy/", langs)
 
     html += f"""
