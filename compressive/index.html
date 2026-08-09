@@ -5,32 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Compressive — Support</title>
 <meta name="description" content="Compressive frees up space on your iPhone by re-packing your videos. Same resolution, same frames, a fraction of the size.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400..600&display=swap">
+<link rel="alternate" hreflang="en" href="https://devbalek.github.io/compressive/">
+<link rel="alternate" hreflang="tr" href="https://devbalek.github.io/compressive/tr/">
+<link rel="alternate" hreflang="x-default" href="https://devbalek.github.io/compressive/">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="wrap">
-
+<script>
+(function () {
+  try {
+    if (location.search.indexOf('hl=') !== -1) return;
+    if (sessionStorage.getItem('hl')) return;
+    var published = ["tr"];
+    var preferred = navigator.languages || [navigator.language || ''];
+    for (var i = 0; i < preferred.length; i++) {
+      var code = String(preferred[i]).toLowerCase().split('-')[0];
+      if (code === 'en') return;
+      if (published.indexOf(code) !== -1) {
+        location.replace('/compressive/' + code + '/');
+        return;
+      }
+    }
+  } catch (e) {}
+})();
+</script>
   <div class="masthead">
-    <a class="wordmark" href="../">Compressive</a>
-    <nav class="langs">
-      <a href="#en" aria-current="true">EN</a>
-      <a href="#tr">TR</a>
+    <a class="wordmark" href="/compressive/">Compressive</a>
+    <nav class="langs" aria-label="Language">
+      <a href="/compressive/?hl=en" aria-current="page">EN</a>
+      <a href="/compressive/tr/?hl=tr">TR</a>
     </nav>
   </div>
 
-  <!-- ============================================================ English -->
-
-  <div class="hero" id="en">
+  <div class="hero">
     <p class="eyebrow">iPhone · Storage</p>
     <h1>Most of a video isn’t picture. It’s padding.</h1>
-    <p class="lede">
-      Your camera records in a hurry, and filming leaves no time to pack files
-      well. Compressive takes the time your camera couldn’t — same resolution,
-      same frames, a fraction of the size.
-    </p>
+    <p class="lede">Your camera records in a hurry, and filming leaves no time to pack files well. Compressive takes the time your camera couldn’t — same resolution, same frames, a fraction of the size.</p>
 
     <div class="meter">
       <div class="meter-row">
@@ -40,7 +51,7 @@
         </div>
         <div class="track">
           <div class="fill picture" style="--w:30.1%"></div>
-          <div class="fill padding" style="--from:30.1%; --w:100%; --d:.18s"></div>
+          <div class="fill padding" style="--from:30.1%; --w:100%"></div>
         </div>
       </div>
 
@@ -50,7 +61,7 @@
           <b class="num">10.6 MB</b>
         </div>
         <div class="track">
-          <div class="fill picture" style="--w:30.1%; --d:.55s"></div>
+          <div class="fill picture" style="--w:30.1%"></div>
         </div>
       </div>
 
@@ -59,25 +70,14 @@
         <span><i class="k-padding"></i> Padding added in a rush</span>
       </div>
 
-      <p class="verdict">
-        A real 4K 60 fps clip, re-encoded with the Balanced preset.
-        <b>70% smaller.</b> Every pixel kept — and the app shows you both
-        versions side by side before anything is replaced.
-      </p>
+      <p class="verdict">A real 4K 60 fps clip, re-encoded with the Balanced preset. <b>70% smaller.</b> Every pixel kept — and the app shows you both versions side by side before anything is replaced.</p>
     </div>
   </div>
 
   <section>
     <h2>Support</h2>
-    <p class="narrow">
-      Questions, bug reports, feature requests — write to
-      <a class="link" href="mailto:support@compressive.app">support@compressive.app</a>.
-      Replies usually come within a couple of days.
-    </p>
-    <p class="narrow small">
-      If you are reporting a problem, it helps to include your iPhone model,
-      your iOS version, and what you were doing when it happened.
-    </p>
+    <p class="narrow">Questions, bug reports, feature requests — write to <a href="mailto:support@compressive.app">support@compressive.app</a>. Replies usually come within a couple of days.</p>
+    <p class="narrow small">If you are reporting a problem, it helps to include your iPhone model, your iOS version, and what you were doing when it happened.</p>
   </section>
 
   <section>
@@ -85,169 +85,40 @@
     <div class="faq narrow">
       <div>
         <h3>Will my videos look worse?</h3>
-        <p>That is the thing to check rather than take on faith, which is why
-        the app shows you the original and the compressed copy side by side
-        before you decide. Spot the difference? Then don’t compress.</p>
+        <p>That is the thing to check rather than take on faith, which is why the app shows you the original and the compressed copy side by side before you decide. Spot the difference? Then don’t compress.</p>
       </div>
       <div>
         <h3>Are my originals deleted automatically?</h3>
-        <p>No. Compressive never deletes anything without you confirming it.
-        The compressed copy is created first, and the original is only removed
-        once you have looked at the pair and chosen to replace it.</p>
+        <p>No. Compressive never deletes anything without you confirming it. The compressed copy is created first, and the original is only removed once you have looked at the pair and chosen to replace it.</p>
       </div>
       <div>
         <h3>Do my videos get uploaded anywhere?</h3>
-        <p>No. Everything happens on your iPhone. Compressive has no server and
-        contains no networking code at all — see the
-        <a class="link" href="privacy/">privacy policy</a>.</p>
+        <p>No. Everything happens on your iPhone. Compressive has no server and contains no networking code at all — see the <a href="privacy/">privacy policy</a>.</p>
       </div>
       <div>
         <h3>What about videos stored in iCloud?</h3>
-        <p>If iCloud Photos has moved an original off your device, it has to
-        come back down before it can be compressed. Compressive asks iOS to
-        fetch it from your own iCloud account and shows you the download as it
-        happens.</p>
+        <p>If iCloud Photos has moved an original off your device, it has to come back down before it can be compressed. Compressive asks iOS to fetch it from your own iCloud account and shows you the download as it happens.</p>
       </div>
       <div>
         <h3>What do I get with Pro?</h3>
-        <p>App targets, original resolution, per-video quality, unlimited
-        batches, compression that keeps going in the background, and queueing
-        while a job runs. The free version compresses with all three quality
-        presets — and verifying and deleting originals is free too. That part
-        should never be behind a paywall.</p>
+        <p>App targets, original resolution, per-video quality, unlimited batches, compression that keeps going in the background, and queueing while a job runs. The free version compresses with all three quality presets — and verifying and deleting originals is free too. That part should never be behind a paywall.</p>
       </div>
       <div>
         <h3>How do I cancel a subscription?</h3>
-        <p>On your iPhone: Settings → tap your name → Subscriptions →
-        Compressive. Compressive cannot cancel it for you; only Apple can.
-        Lifetime is a one-time purchase — there is nothing to cancel.</p>
+        <p>On your iPhone: Settings → tap your name → Subscriptions → Compressive. Compressive cannot cancel it for you; only Apple can. Lifetime is a one-time purchase — there is nothing to cancel.</p>
       </div>
       <div>
         <h3>I bought Pro but my new iPhone doesn’t have it</h3>
-        <p>Open Compressive → Settings → Restore Purchases, signed in with the
-        same Apple Account you bought it on.</p>
-      </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- ============================================================= Türkçe -->
-
-  <div class="hero" id="tr">
-    <p class="eyebrow">iPhone · Depolama</p>
-    <h1>Bir videonun çoğu görüntü değil. Dolgu.</h1>
-    <p class="lede">
-      Kameran aceleyle kaydediyor ve çekim sırasında dosyayı düzgün paketlemeye
-      zaman kalmıyor. Compressive, kameranın bulamadığı zamanı ayırıyor — aynı
-      çözünürlük, aynı kareler, boyutun küçük bir kısmı.
-    </p>
-
-    <div class="meter">
-      <div class="meter-row">
-        <div class="meter-label">
-          <span>Doğrudan kameradan</span>
-          <b class="num">35,2 MB</b>
-        </div>
-        <div class="track">
-          <div class="fill picture" style="--w:30.1%"></div>
-          <div class="fill padding" style="--from:30.1%; --w:100%; --d:.18s"></div>
-        </div>
-      </div>
-
-      <div class="meter-row">
-        <div class="meter-label">
-          <span>Compressive’den sonra</span>
-          <b class="num">10,6 MB</b>
-        </div>
-        <div class="track">
-          <div class="fill picture" style="--w:30.1%; --d:.55s"></div>
-        </div>
-      </div>
-
-      <div class="legend">
-        <span><i class="k-picture"></i> Görüntünün kendisi</span>
-        <span><i class="k-padding"></i> Acele sırasında eklenen dolgu</span>
-      </div>
-
-      <p class="verdict">
-        Gerçek bir 4K 60 fps klip, Dengeli ön ayarıyla yeniden kodlandı.
-        <b>%70 daha küçük.</b> Her piksel korunur — ve uygulama, hiçbir şey
-        değiştirilmeden önce iki sürümü sana yan yana gösterir.
-      </p>
-    </div>
-  </div>
-
-  <section>
-    <h2>Destek</h2>
-    <p class="narrow">
-      Sorularınız, hata bildirimleriniz ve özellik istekleriniz için:
-      <a class="link" href="mailto:support@compressive.app">support@compressive.app</a>.
-      Yanıtlar genellikle birkaç gün içinde geliyor.
-    </p>
-    <p class="narrow small">
-      Bir sorun bildiriyorsanız iPhone modelinizi, iOS sürümünüzü ve sorun
-      oluştuğunda ne yaptığınızı yazmanız çok yardımcı olur.
-    </p>
-  </section>
-
-  <section>
-    <h2>Sık sorulanlar</h2>
-    <div class="faq narrow">
-      <div>
-        <h3>Videolarım daha kötü mü görünecek?</h3>
-        <p>Bu, inanılacak değil kontrol edilecek bir şey — uygulama tam da bu
-        yüzden karar vermeden önce orijinal ile sıkıştırılmış kopyayı yan yana
-        gösteriyor. Farkı görebiliyor musun? O zaman sıkıştırma.</p>
-      </div>
-      <div>
-        <h3>Orijinallerim otomatik olarak siliniyor mu?</h3>
-        <p>Hayır. Compressive siz onaylamadan hiçbir şeyi silmez. Önce
-        sıkıştırılmış kopya oluşturulur; orijinal ise ancak siz ikisine bakıp
-        değiştirmeyi seçtikten sonra kaldırılır.</p>
-      </div>
-      <div>
-        <h3>Videolarım bir yere yükleniyor mu?</h3>
-        <p>Hayır. Her şey iPhone’unuzda olur. Compressive’in sunucusu yoktur ve
-        içinde hiç ağ kodu bulunmaz —
-        <a class="link" href="privacy/#tr">gizlilik politikasına</a>
-        bakabilirsiniz.</p>
-      </div>
-      <div>
-        <h3>iCloud’da duran videolar ne olacak?</h3>
-        <p>iCloud Fotoğraflar bir orijinali cihazınızdan taşıdıysa,
-        sıkıştırılmadan önce geri inmesi gerekir. Compressive dosyayı sizin
-        kendi iCloud hesabınızdan getirmesi için iOS’a başvurur ve indirmeyi
-        size göstererek bekler.</p>
-      </div>
-      <div>
-        <h3>Pro ile ne geliyor?</h3>
-        <p>Uygulama hedefleri, orijinal çözünürlük, video başına kalite,
-        sınırsız toplu iş, arka planda devam eden sıkıştırma ve iş sürerken
-        kuyruğa ekleme. Ücretsiz sürüm üç kalite ön ayarının hepsiyle
-        sıkıştırır — orijinalleri doğrulama ve silme de ücretsizdir. O kısım
-        hiçbir zaman ödeme duvarının arkasında olmamalı.</p>
-      </div>
-      <div>
-        <h3>Aboneliği nasıl iptal ederim?</h3>
-        <p>iPhone’unuzda: Ayarlar → adınıza dokunun → Abonelikler →
-        Compressive. Compressive sizin yerinize iptal edemez; bunu yalnızca
-        Apple yapabilir. Lifetime tek seferlik bir satın almadır — iptal
-        edilecek bir şey yoktur.</p>
-      </div>
-      <div>
-        <h3>Pro aldım ama yeni iPhone’umda görünmüyor</h3>
-        <p>Compressive → Ayarlar → Satın Almaları Geri Yükle; satın aldığınız
-        Apple Hesabı ile giriş yapmış olmanız yeterli.</p>
+        <p>Open Compressive → Settings → Restore Purchases, signed in with the same Apple Account you bought it on.</p>
       </div>
     </div>
   </section>
 
   <footer>
     <span>© 2026 Furkan Balek</span>
-    <a href="privacy/">Privacy</a>
+    <a href="/compressive/privacy/">Privacy Policy</a>
     <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
-    <span class="spacer"><a href="../">All apps</a></span>
+    <span class="spacer"><a href="/">All apps</a></span>
   </footer>
 
 </div>

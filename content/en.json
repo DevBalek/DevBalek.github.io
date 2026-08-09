@@ -1,0 +1,171 @@
+{
+  "app_name": "Compressive",
+
+  "hub": {
+    "title": "Furkan Balek",
+    "description": "iPhone apps by Furkan Balek.",
+    "h1": "Furkan Balek",
+    "lede": "iPhone apps, one at a time.",
+    "app_blurb": "Frees up space on your iPhone by re-packing your videos — same resolution, same frames, a fraction of the size. Nothing is deleted without your say-so.",
+    "app_cta": "Support and privacy"
+  },
+
+  "footer": {
+    "copyright": "© 2026 Furkan Balek",
+    "privacy": "Privacy Policy",
+    "support": "Support",
+    "terms": "Terms of Use",
+    "terms_href": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+    "all_apps": "All apps"
+  },
+
+  "support": {
+    "title": "Compressive — Support",
+    "description": "Compressive frees up space on your iPhone by re-packing your videos. Same resolution, same frames, a fraction of the size.",
+    "eyebrow": "iPhone · Storage",
+    "h1": "Most of a video isn’t picture. It’s padding.",
+    "lede": "Your camera records in a hurry, and filming leaves no time to pack files well. Compressive takes the time your camera couldn’t — same resolution, same frames, a fraction of the size.",
+
+    "meter": {
+      "ratio": "30.1%",
+      "before_label": "Straight off the camera",
+      "before_size": "35.2 MB",
+      "after_label": "After Compressive",
+      "after_size": "10.6 MB",
+      "key_picture": "The picture itself",
+      "key_padding": "Padding added in a rush",
+      "verdict": "A real 4K 60 fps clip, re-encoded with the Balanced preset. **70% smaller.** Every pixel kept — and the app shows you both versions side by side before anything is replaced."
+    },
+
+    "support_h2": "Support",
+    "support_body": "Questions, bug reports, feature requests — write to [support@compressive.app](mailto:support@compressive.app). Replies usually come within a couple of days.",
+    "support_hint": "If you are reporting a problem, it helps to include your iPhone model, your iOS version, and what you were doing when it happened.",
+
+    "faq_h2": "Common questions",
+    "faq": [
+      {
+        "q": "Will my videos look worse?",
+        "a": "That is the thing to check rather than take on faith, which is why the app shows you the original and the compressed copy side by side before you decide. Spot the difference? Then don’t compress."
+      },
+      {
+        "q": "Are my originals deleted automatically?",
+        "a": "No. Compressive never deletes anything without you confirming it. The compressed copy is created first, and the original is only removed once you have looked at the pair and chosen to replace it."
+      },
+      {
+        "q": "Do my videos get uploaded anywhere?",
+        "a": "No. Everything happens on your iPhone. Compressive has no server and contains no networking code at all — see the [privacy policy](privacy/)."
+      },
+      {
+        "q": "What about videos stored in iCloud?",
+        "a": "If iCloud Photos has moved an original off your device, it has to come back down before it can be compressed. Compressive asks iOS to fetch it from your own iCloud account and shows you the download as it happens."
+      },
+      {
+        "q": "What do I get with Pro?",
+        "a": "App targets, original resolution, per-video quality, unlimited batches, compression that keeps going in the background, and queueing while a job runs. The free version compresses with all three quality presets — and verifying and deleting originals is free too. That part should never be behind a paywall."
+      },
+      {
+        "q": "How do I cancel a subscription?",
+        "a": "On your iPhone: Settings → tap your name → Subscriptions → Compressive. Compressive cannot cancel it for you; only Apple can. Lifetime is a one-time purchase — there is nothing to cancel."
+      },
+      {
+        "q": "I bought Pro but my new iPhone doesn’t have it",
+        "a": "Open Compressive → Settings → Restore Purchases, signed in with the same Apple Account you bought it on."
+      }
+    ]
+  },
+
+  "privacy": {
+    "title": "Privacy Policy — Compressive",
+    "description": "Compressive collects nothing. No account, no analytics, no tracking, no server.",
+    "updated": "Last updated 9 August 2026",
+    "h1": "Privacy Policy",
+    "lede": "Compressive for iPhone",
+
+    "blocks": [
+      {
+        "type": "claim",
+        "text": "**Compressive collects nothing.** There is no account, no analytics, no advertising, no tracking, and no server of ours for anything to be sent to. Your videos are processed on your iPhone and never leave it."
+      },
+      {
+        "type": "p",
+        "text": "That is the whole policy. The rest of this page explains what the app touches on your device and why, so the sentence above can be checked rather than trusted."
+      },
+      { "type": "h2", "text": "What Compressive accesses" },
+      {
+        "type": "card",
+        "items": [
+          {
+            "term": "Your photo library",
+            "detail": "Compressive asks for access to your photo library because that is where your videos are. It reads each video’s size, length and resolution to work out how much space could be saved, writes the compressed copy back to your library, and — only after you confirm it — deletes an original you chose to replace. Nothing is changed or deleted without your confirmation."
+          },
+          {
+            "term": "Videos you send from the Photos app",
+            "detail": "If you share videos into Compressive from the Photos share sheet, iOS hands them to the app on your device. They go nowhere else."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "That is the only permission Compressive asks for. It does not request your location, contacts, microphone, camera, calendar, health data, or advertising identifier, and it shows no App Tracking Transparency prompt because it does not track you."
+      },
+      { "type": "h2", "text": "What leaves your device" },
+      {
+        "type": "p",
+        "text": "Nothing. Compressive contains no networking code at all — it cannot send your videos, your library contents, or anything about your usage anywhere, because there is nowhere for it to send them and no code to do the sending."
+      },
+      { "type": "p", "text": "There is one honest caveat worth stating plainly:" },
+      {
+        "type": "card",
+        "items": [
+          {
+            "term": "Videos stored in iCloud Photos",
+            "detail": "If iCloud Photos has moved an original off your device to save space, compressing it requires downloading it back first. That download happens between your iPhone and __your own__ iCloud account, over Apple’s own systems — Compressive asks iOS for the file and waits. We never see it, and it never passes through anything of ours. This is the same download that happens when you open the video in the Photos app."
+          }
+        ]
+      },
+      { "type": "h2", "text": "What is stored on your device" },
+      {
+        "type": "p",
+        "text": "Compressive keeps a small amount of information in its own storage on your iPhone, so the app remembers how you like it set up:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Your settings — quality preset, output format, grid density, sort order, appearance, what should happen to originals after compressing",
+          "Which compressed copies are waiting for you to review, so the app can pair them with their originals",
+          "A running total of how much space you have freed",
+          "Whether you have seen the introduction"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "All of it stays on your device, and all of it is removed when you delete the app. None of it identifies you."
+      },
+      { "type": "h2", "text": "Purchases" },
+      {
+        "type": "p",
+        "text": "Compressive Pro is sold through Apple’s App Store. Apple handles the payment and tells the app one thing: whether this Apple Account is entitled to Pro. We never receive your name, email address, payment method or card details — Apple does not share them with developers. Apple’s own privacy policy governs that transaction."
+      },
+      { "type": "h2", "text": "Analytics, advertising and tracking" },
+      {
+        "type": "p",
+        "text": "There are none. Compressive contains no analytics library, no advertising library, no crash reporter, and no third-party SDK of any kind. Nobody — us included — receives a record of which buttons you pressed or which videos you have."
+      },
+      { "type": "h2", "text": "Children" },
+      {
+        "type": "p",
+        "text": "Compressive is not directed at children and collects no personal information from anyone, of any age."
+      },
+      { "type": "h2", "text": "Changes to this policy" },
+      {
+        "type": "p",
+        "text": "If a future version of Compressive ever does something this page does not describe, this page will be updated before that version is released, and the date at the top will change."
+      },
+      { "type": "h2", "text": "Contact" },
+      {
+        "type": "p",
+        "text": "Questions about this policy, or about the app: [support@compressive.app](mailto:support@compressive.app)"
+      }
+    ]
+  }
+}

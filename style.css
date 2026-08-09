@@ -1,210 +1,188 @@
-/* Compressive — one stylesheet for the hub, the app page and the privacy policy.
-   No JavaScript anywhere: these pages are read by customers on bad connections
-   and opened by App Review, and both cases want plain documents that render.
+/* Compressive — support and privacy pages.
 
-   The app's own idea carries the design: a video is a small amount of picture
-   (blue) and a lot of padding (striped orange), and what you get back is green.
-   Those three colours are the whole palette. */
+   Same rule as the app: when unsure, do what Apple does. San Francisco (via the
+   system font stack, so it is the real thing on Apple devices and a sane
+   grotesque everywhere else), Apple's own greys, one blue for links, and
+   nothing decorative. No web fonts, no texture, no shadows to speak of — a
+   privacy policy should look like a document, and a support page should look
+   like Apple's.
 
-/* ---------------------------------------------------------------- tokens */
+   The one piece of colour is the app's own: blue is the picture you keep,
+   hatched orange is the padding you don't. That is the product's idea, not an
+   ornament, so it stays. */
 
 :root {
   color-scheme: light dark;
 
-  --paper:    #fbfaf8;
-  --surface:  #ffffff;
-  --ink:      #16161a;
-  --muted:    #6b6b73;
-  --faint:    #9a9aa2;
-  --rule:     rgba(22, 22, 26, 0.10);
-  --hairline: rgba(22, 22, 26, 0.07);
+  --bg:        #ffffff;
+  --bg-alt:    #f5f5f7;
+  --ink:       #1d1d1f;
+  --muted:     #6e6e73;
+  --rule:      #d2d2d7;
+  --link:      #0066cc;
 
-  --picture:  #2b6be4;   /* the frames you keep */
-  --padding:  #e8833a;   /* the weight you don't */
-  --saved:    #1f9254;   /* what comes back */
+  --picture:   #0066cc;
+  --padding:   #d9761f;
 
-  /* How hard the hatching is drawn. The two stops are mixed with transparent
-     over the track, so the same pair that reads as warm hatching on paper comes
-     out as mud on black — dark mode needs its own numbers, not its own hue. */
-  --hatch-hi: 42%;
-  --hatch-lo: 16%;
+  --hatch-hi:  38%;
+  --hatch-lo:  13%;
 
-  --shadow: 0 1px 2px rgba(22,22,26,.05), 0 8px 24px -12px rgba(22,22,26,.14);
-
-  --measure: 40rem;
-  --gap: clamp(3rem, 8vw, 5.5rem);
+  --content:   980px;
+  --measure:   692px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper:    #0b0b0d;
-    --surface:  #151518;
-    --ink:      #f2f1ee;
-    --muted:    #9b9aa2;
-    --faint:    #6e6d75;
-    --rule:     rgba(242, 241, 238, 0.13);
-    --hairline: rgba(242, 241, 238, 0.08);
+    --bg:      #000000;
+    --bg-alt:  #1d1d1f;
+    --ink:     #f5f5f7;
+    --muted:   #86868b;
+    --rule:    #424245;
+    --link:    #2997ff;
 
-    --picture:  #6e9bf5;
-    --padding:  #f5a35e;
-    --saved:    #45c97c;
+    --picture: #2997ff;
+    --padding: #f0975a;
 
-    --hatch-hi: 78%;
-    --hatch-lo: 24%;
-
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px -16px rgba(0,0,0,.7);
+    --hatch-hi: 72%;
+    --hatch-lo: 20%;
   }
 }
 
-/* ------------------------------------------------------------------ base */
-
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
-  font-family: "Instrument Sans", ui-sans-serif, -apple-system, BlinkMacSystemFont,
-               "Segoe UI", sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+               "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
-
-/* A page-wide grain, so the off-white reads as paper rather than as #fff that
-   somebody forgot to style. Two pixels of SVG noise, no image request. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: .5;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
-}
-@media (prefers-color-scheme: dark) { body::before { opacity: .9; } }
 
 .wrap {
-  position: relative;
-  z-index: 1;
-  width: min(100% - 2.5rem, 58rem);
+  width: min(100% - 2.75rem, var(--content));
   margin-inline: auto;
 }
 
-.narrow { max-width: var(--measure); }
+.narrow, .prose { max-width: var(--measure); }
 
 /* ------------------------------------------------------------ typography */
 
-h1, h2, h3, .display {
-  font-family: Fraunces, ui-serif, Georgia, "Times New Roman", serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.1;
-  text-wrap: balance;
-}
+h1, h2, h3 { font-weight: 600; margin: 0; }
 
 h1 {
-  font-size: clamp(2.4rem, 6.5vw, 4rem);
-  font-variation-settings: "SOFT" 0, "WONK" 1;
-  margin: 0 0 1rem;
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin-bottom: .5rem;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3.2vw, 2rem);
-  margin: 0 0 .85rem;
+  font-size: clamp(1.5rem, 2.6vw, 1.75rem);
+  line-height: 1.14;
+  letter-spacing: -0.012em;
+  margin-bottom: .75rem;
 }
 
-h3 { font-size: 1.1875rem; margin: 0 0 .35rem; letter-spacing: -0.01em; }
+h3 {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  letter-spacing: -0.012em;
+  margin-bottom: .25rem;
+}
 
-p { margin: 0 0 1.1rem; text-wrap: pretty; }
+p { margin: 0 0 1rem; }
 p:last-child { margin-bottom: 0; }
 
 .lede {
-  font-size: clamp(1.125rem, 2.2vw, 1.3125rem);
-  line-height: 1.5;
+  font-size: clamp(1.1875rem, 2.1vw, 1.3125rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
   color: var(--muted);
   max-width: 34rem;
 }
 
+/* Apple's eyebrow is just small semibold text, not a mono tracking exercise. */
 .eyebrow {
-  font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: .75rem;
-  font-weight: 500;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--faint);
-  margin: 0 0 1.25rem;
-}
-
-.num {
-  font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-  font-variant-numeric: tabular-nums;
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 .5rem;
   letter-spacing: -0.01em;
 }
 
-a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: .2em; }
-a:hover { text-decoration-color: currentColor; }
+.num { font-variant-numeric: tabular-nums; }
 
-.link {
-  color: var(--picture);
-  text-decoration-color: color-mix(in srgb, var(--picture) 35%, transparent);
-}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-small, .small { font-size: .875rem; color: var(--muted); }
+small, .small { font-size: .875rem; line-height: 1.43; color: var(--muted); }
 
 /* --------------------------------------------------------------- masthead */
 
 .masthead {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 2rem 0 0;
+  height: 3rem;
+  border-bottom: 1px solid var(--rule);
 }
 
 .wordmark {
-  font-family: Fraunces, ui-serif, Georgia, serif;
-  font-weight: 600;
   font-size: 1.0625rem;
-  letter-spacing: -0.01em;
-  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  color: var(--ink);
 }
-.wordmark::before {
-  content: "";
-  display: inline-block;
-  width: .55em; height: .55em;
-  margin-right: .5em;
-  border-radius: 2px;
-  background: var(--picture);
-  vertical-align: baseline;
+.wordmark:hover { text-decoration: none; }
+
+.langs { display: flex; gap: 1rem; font-size: .875rem; }
+.langs a { color: var(--muted); }
+/* The page you are already on. Stated in weight and colour rather than with a
+   marker, so the row stays a row of words. */
+.langs a[aria-current] { color: var(--ink); font-weight: 600; }
+
+/* ------------------------------------------------------------------ blocks */
+
+.hero { padding: 3.5rem 0 0; }
+
+section { padding: 3rem 0; border-top: 1px solid var(--rule); }
+.hero + section { border-top: 0; padding-top: 3rem; }
+
+/* The policy pages put prose straight after the hero rather than a section, so
+   the gap the section's padding would have given has to be stated here. */
+.hero + .prose { margin-top: 2.5rem; }
+
+.card {
+  background: var(--bg-alt);
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
 }
 
-/* The language switch, and the only pill on the site. */
-.langs { display: flex; gap: .25rem; font-size: .8125rem; }
-.langs a {
-  padding: .3rem .7rem;
-  border-radius: 999px;
-  text-decoration: none;
-  color: var(--muted);
-  border: 1px solid transparent;
-  transition: background .15s ease, color .15s ease, border-color .15s ease;
+/* The hub's app row: a plain list item, the way Settings would draw it. */
+.app {
+  display: block;
+  background: var(--bg-alt);
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  color: var(--ink);
 }
-.langs a:hover { color: var(--ink); border-color: var(--rule); }
+.app:hover { text-decoration: none; }
+.app h3 { margin-bottom: .25rem; }
+.app .small { display: block; margin-top: .75rem; color: var(--link); }
 
-/* ------------------------------------------------------------------- hero */
+/* ------------------------------------------------- picture vs padding bars */
 
-.hero { padding: clamp(3.5rem, 10vw, 6.5rem) 0 var(--gap); }
+.meter { margin-top: 2.25rem; max-width: var(--measure); }
 
-/* ------------------------------------------------- the picture/padding bar */
-
-.meter { margin: 2.75rem 0 0; }
-
-.meter-row { margin-bottom: 1.35rem; }
+.meter-row { margin-bottom: 1rem; }
 .meter-row:last-of-type { margin-bottom: 0; }
 
 .meter-label {
@@ -212,65 +190,49 @@ small, .small { font-size: .875rem; color: var(--muted); }
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  font-size: .8125rem;
+  font-size: .875rem;
   color: var(--muted);
-  margin-bottom: .45rem;
+  margin-bottom: .35rem;
 }
-.meter-label b { font-weight: 500; color: var(--ink); }
+.meter-label b { font-weight: 600; color: var(--ink); }
 
 .track {
   position: relative;
-  height: 2.75rem;
-  border-radius: 10px;
+  height: 2rem;
+  border-radius: 8px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  background: var(--bg-alt);
 }
 
 .fill {
   position: absolute;
   inset: 0 auto 0 0;
-  border-radius: 10px;
   width: var(--w);
-  animation: grow 1.1s cubic-bezier(.22,.68,.24,1) both;
-  animation-delay: var(--d, 0s);
+  border-radius: 8px;
+  background: var(--picture);
 }
 
-.fill.picture { background: var(--picture); }
-
-/* Padding is drawn as hatching rather than as a second flat colour: the point
-   is that it is filler, not content. */
 .fill.padding {
   left: var(--from);
   width: calc(var(--w) - var(--from));
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      color-mix(in srgb, var(--padding) var(--hatch-hi), transparent) 0 5px,
-      color-mix(in srgb, var(--padding) var(--hatch-lo), transparent) 5px 10px
-    );
-  border-radius: 0 10px 10px 0;
-  animation-name: grow-right;
-}
-
-@keyframes grow { from { width: 0; } }
-@keyframes grow-right { from { width: 0; } }
-
-@media (prefers-reduced-motion: reduce) {
-  .fill { animation: none; }
+  border-radius: 0 8px 8px 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--padding) var(--hatch-hi), transparent) 0 4px,
+    color-mix(in srgb, var(--padding) var(--hatch-lo), transparent) 4px 8px
+  );
 }
 
 .legend {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-  margin-top: 1.1rem;
-  font-size: .8125rem;
+  margin-top: .85rem;
+  font-size: .875rem;
   color: var(--muted);
 }
-.legend span { display: inline-flex; align-items: center; gap: .45rem; }
-.legend i {
-  width: .7rem; height: .7rem; border-radius: 3px; display: inline-block;
-}
+.legend span { display: inline-flex; align-items: center; gap: .4rem; }
+.legend i { width: .65rem; height: .65rem; border-radius: 2px; display: inline-block; }
 .legend .k-picture { background: var(--picture); }
 .legend .k-padding {
   background: repeating-linear-gradient(-45deg,
@@ -278,88 +240,49 @@ small, .small { font-size: .875rem; color: var(--muted); }
     color-mix(in srgb, var(--padding) var(--hatch-lo), transparent) 3px 6px);
 }
 
-.verdict {
-  margin-top: 1.75rem;
-  font-size: .9375rem;
-  color: var(--muted);
-}
-.verdict b { color: var(--saved); font-weight: 600; }
-
-/* ------------------------------------------------------------------ cards */
-
-section { padding-block: var(--gap); border-top: 1px solid var(--hairline); }
-section:first-of-type { border-top: 0; }
-
-.card {
-  background: var(--surface);
-  border: 1px solid var(--hairline);
-  border-radius: 18px;
-  padding: 1.5rem 1.65rem;
-  box-shadow: var(--shadow);
-}
-
-/* The hub's app entry — a card that is mostly a link. */
-.app {
-  display: block;
-  text-decoration: none;
-  transition: transform .18s cubic-bezier(.22,.68,.24,1), box-shadow .18s ease;
-}
-.app:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(22,22,26,.06), 0 18px 40px -18px rgba(22,22,26,.28);
-}
-@media (prefers-reduced-motion: reduce) { .app:hover { transform: none; } }
-.app h3 { margin-bottom: .3rem; }
-.app .small { display: block; margin-top: .9rem; color: var(--picture); }
+.verdict { margin-top: 1.25rem; font-size: .875rem; line-height: 1.43; color: var(--muted); }
+.verdict b { color: var(--ink); font-weight: 600; }
 
 /* --------------------------------------------------------------------- faq */
 
-.faq { border-top: 1px solid var(--hairline); }
-.faq > div { padding: 1.4rem 0; border-bottom: 1px solid var(--hairline); }
-.faq h3 { margin-bottom: .4rem; }
+.faq > div { padding: 1.25rem 0; border-top: 1px solid var(--rule); }
+.faq > div:first-child { border-top: 0; padding-top: 0; }
 .faq p { color: var(--muted); margin: 0; }
 
-/* ------------------------------------------------------------------ prose */
+/* ------------------------------------------------------------------- prose */
 
-.prose { max-width: var(--measure); }
-.prose h2 { margin-top: 2.75rem; }
+.prose h2 { margin-top: 2.5rem; }
 .prose h2:first-child { margin-top: 0; }
-.prose ul { padding-left: 1.15rem; margin: 0 0 1.1rem; }
-.prose li { margin: .4rem 0; }
+.prose ul { padding-left: 1.15rem; margin: 0 0 1rem; }
+.prose li { margin: .35rem 0; }
 .prose dl { margin: 0; }
-.prose dt { font-weight: 600; margin-top: 1.1rem; }
+.prose dt { font-weight: 600; margin-top: 1rem; }
 .prose dt:first-child { margin-top: 0; }
-.prose dd { margin: .25rem 0 0; color: var(--muted); }
+.prose dd { margin: .2rem 0 0; color: var(--muted); }
 
-/* The one claim everything else supports. */
+/* The sentence the whole document rests on. Stated, not decorated. */
 .claim {
-  border-left: 2px solid var(--saved);
-  padding: .15rem 0 .15rem 1.4rem;
-  margin: 2rem 0;
-  font-size: clamp(1.125rem, 2.4vw, 1.375rem);
-  line-height: 1.45;
-  font-family: Fraunces, ui-serif, Georgia, serif;
-  letter-spacing: -0.01em;
-}
-.claim b { color: var(--saved); font-weight: 600; }
-
-.divider {
-  border: 0;
-  border-top: 1px solid var(--rule);
-  margin: var(--gap) 0;
+  font-size: clamp(1.1875rem, 2.1vw, 1.3125rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.5rem;
 }
 
-/* ----------------------------------------------------------------- footer */
+.divider { border: 0; border-top: 1px solid var(--rule); margin: 4rem 0 0; }
+
+/* ------------------------------------------------------------------ footer */
 
 footer {
-  border-top: 1px solid var(--hairline);
-  padding: 2rem 0 3.5rem;
+  border-top: 1px solid var(--rule);
+  margin-top: 3rem;
+  padding: 1.25rem 0 3rem;
   display: flex;
   flex-wrap: wrap;
-  gap: .5rem 1.5rem;
+  gap: .35rem 1.5rem;
   align-items: baseline;
-  font-size: .875rem;
+  font-size: .75rem;
+  line-height: 1.33;
   color: var(--muted);
 }
-footer a { text-decoration-color: var(--rule); }
+footer a { color: var(--muted); }
 footer .spacer { margin-left: auto; }

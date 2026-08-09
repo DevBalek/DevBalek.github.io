@@ -1,0 +1,171 @@
+{
+  "app_name": "Compressive",
+
+  "hub": {
+    "title": "Furkan Balek",
+    "description": "Furkan Balek'in iPhone uygulamaları.",
+    "h1": "Furkan Balek",
+    "lede": "Teker teker, iPhone uygulamaları.",
+    "app_blurb": "Videolarını yeniden paketleyerek iPhone'unda yer açar — aynı çözünürlük, aynı kareler, boyutun küçük bir kısmı. Senin onayın olmadan hiçbir şey silinmez.",
+    "app_cta": "Destek ve gizlilik"
+  },
+
+  "footer": {
+    "copyright": "© 2026 Furkan Balek",
+    "privacy": "Gizlilik Politikası",
+    "support": "Destek",
+    "terms": "Kullanım Koşulları",
+    "terms_href": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+    "all_apps": "Tüm uygulamalar"
+  },
+
+  "support": {
+    "title": "Compressive — Destek",
+    "description": "Compressive, videolarını yeniden paketleyerek iPhone'unda yer açar. Aynı çözünürlük, aynı kareler, boyutun küçük bir kısmı.",
+    "eyebrow": "iPhone · Depolama",
+    "h1": "Bir videonun çoğu görüntü değil. Dolgu.",
+    "lede": "Kameran aceleyle kaydediyor ve çekim sırasında dosyayı düzgün paketlemeye zaman kalmıyor. Compressive, kameranın bulamadığı zamanı ayırıyor — aynı çözünürlük, aynı kareler, boyutun küçük bir kısmı.",
+
+    "meter": {
+      "ratio": "30.1%",
+      "before_label": "Doğrudan kameradan",
+      "before_size": "35,2 MB",
+      "after_label": "Compressive'den sonra",
+      "after_size": "10,6 MB",
+      "key_picture": "Görüntünün kendisi",
+      "key_padding": "Acele sırasında eklenen dolgu",
+      "verdict": "Gerçek bir 4K 60 fps klip, Dengeli ön ayarıyla yeniden kodlandı. **%70 daha küçük.** Her piksel korunur — ve uygulama, hiçbir şey değiştirilmeden önce iki sürümü sana yan yana gösterir."
+    },
+
+    "support_h2": "Destek",
+    "support_body": "Sorularınız, hata bildirimleriniz ve özellik istekleriniz için: [support@compressive.app](mailto:support@compressive.app). Yanıtlar genellikle birkaç gün içinde geliyor.",
+    "support_hint": "Bir sorun bildiriyorsanız iPhone modelinizi, iOS sürümünüzü ve sorun oluştuğunda ne yaptığınızı yazmanız çok yardımcı olur.",
+
+    "faq_h2": "Sık sorulanlar",
+    "faq": [
+      {
+        "q": "Videolarım daha kötü mü görünecek?",
+        "a": "Bu, inanılacak değil kontrol edilecek bir şey — uygulama tam da bu yüzden karar vermeden önce orijinal ile sıkıştırılmış kopyayı yan yana gösteriyor. Farkı görebiliyor musun? O zaman sıkıştırma."
+      },
+      {
+        "q": "Orijinallerim otomatik olarak siliniyor mu?",
+        "a": "Hayır. Compressive siz onaylamadan hiçbir şeyi silmez. Önce sıkıştırılmış kopya oluşturulur; orijinal ise ancak siz ikisine bakıp değiştirmeyi seçtikten sonra kaldırılır."
+      },
+      {
+        "q": "Videolarım bir yere yükleniyor mu?",
+        "a": "Hayır. Her şey iPhone'unuzda olur. Compressive'in sunucusu yoktur ve içinde hiç ağ kodu bulunmaz — [gizlilik politikasına](privacy/) bakabilirsiniz."
+      },
+      {
+        "q": "iCloud'da duran videolar ne olacak?",
+        "a": "iCloud Fotoğraflar bir orijinali cihazınızdan taşıdıysa, sıkıştırılmadan önce geri inmesi gerekir. Compressive dosyayı sizin kendi iCloud hesabınızdan getirmesi için iOS'a başvurur ve indirmeyi size göstererek bekler."
+      },
+      {
+        "q": "Pro ile ne geliyor?",
+        "a": "Uygulama hedefleri, orijinal çözünürlük, video başına kalite, sınırsız toplu iş, arka planda devam eden sıkıştırma ve iş sürerken kuyruğa ekleme. Ücretsiz sürüm üç kalite ön ayarının hepsiyle sıkıştırır — orijinalleri doğrulama ve silme de ücretsizdir. O kısım hiçbir zaman ödeme duvarının arkasında olmamalı."
+      },
+      {
+        "q": "Aboneliği nasıl iptal ederim?",
+        "a": "iPhone'unuzda: Ayarlar → adınıza dokunun → Abonelikler → Compressive. Compressive sizin yerinize iptal edemez; bunu yalnızca Apple yapabilir. Lifetime tek seferlik bir satın almadır — iptal edilecek bir şey yoktur."
+      },
+      {
+        "q": "Pro aldım ama yeni iPhone'umda görünmüyor",
+        "a": "Compressive → Ayarlar → Satın Almaları Geri Yükle; satın aldığınız Apple Hesabı ile giriş yapmış olmanız yeterli."
+      }
+    ]
+  },
+
+  "privacy": {
+    "title": "Gizlilik Politikası — Compressive",
+    "description": "Compressive hiçbir veri toplamaz. Hesap yok, analitik yok, takip yok, sunucu yok.",
+    "updated": "Son güncelleme: 9 Ağustos 2026",
+    "h1": "Gizlilik Politikası",
+    "lede": "iPhone için Compressive",
+
+    "blocks": [
+      {
+        "type": "claim",
+        "text": "**Compressive hiçbir veri toplamaz.** Hesap yok, analitik yok, reklam yok, takip yok ve verinin gönderilebileceği bir sunucumuz da yok. Videolarınız iPhone'unuzda işlenir ve cihazınızdan hiç çıkmaz."
+      },
+      {
+        "type": "p",
+        "text": "Politikanın tamamı bu. Sayfanın geri kalanı, uygulamanın cihazınızda neye dokunduğunu ve neden dokunduğunu anlatıyor — böylece yukarıdaki cümleye inanmanız değil, kontrol etmeniz mümkün olur."
+      },
+      { "type": "h2", "text": "Compressive neye erişir" },
+      {
+        "type": "card",
+        "items": [
+          {
+            "term": "Fotoğraf kütüphaneniz",
+            "detail": "Compressive fotoğraf kütüphanenize erişim ister, çünkü videolarınız orada. Ne kadar yer kazanılabileceğini hesaplamak için her videonun boyutunu, süresini ve çözünürlüğünü okur; sıkıştırılmış kopyayı kütüphanenize geri yazar; ve yalnızca siz onayladıktan sonra, değiştirmeyi seçtiğiniz orijinali siler. Onayınız olmadan hiçbir şey değiştirilmez veya silinmez."
+          },
+          {
+            "term": "Fotoğraflar uygulamasından gönderdiğiniz videolar",
+            "detail": "Videoları Fotoğraflar paylaşım sayfasından Compressive'e gönderirseniz, iOS bunları cihazınızın içinde uygulamaya iletir. Başka hiçbir yere gitmez."
+          }
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Compressive'in istediği tek izin budur. Konumunuzu, kişilerinizi, mikrofonunuzu, kameranızı, takviminizi, sağlık verilerinizi veya reklam tanımlayıcınızı istemez; sizi takip etmediği için App Tracking Transparency izni de sormaz."
+      },
+      { "type": "h2", "text": "Cihazınızdan ne çıkar" },
+      {
+        "type": "p",
+        "text": "Hiçbir şey. Compressive'in içinde hiç ağ kodu yoktur — videolarınızı, kütüphanenizin içeriğini veya kullanımınıza dair bir şeyi hiçbir yere gönderemez, çünkü gönderecek bir yer de gönderecek kod da yoktur."
+      },
+      { "type": "p", "text": "Açıkça söylenmesi gereken tek bir istisna var:" },
+      {
+        "type": "card",
+        "items": [
+          {
+            "term": "iCloud Fotoğraflar'da saklanan videolar",
+            "detail": "iCloud Fotoğraflar yer açmak için bir orijinali cihazınızdan taşıdıysa, o videoyu sıkıştırmak için önce geri indirilmesi gerekir. Bu indirme, iPhone'unuz ile __sizin kendi__ iCloud hesabınız arasında, Apple'ın kendi sistemleri üzerinden gerçekleşir — Compressive dosyayı iOS'tan ister ve bekler. Biz o dosyayı hiç görmeyiz ve dosya bize ait hiçbir yerden geçmez. Bu, videoyu Fotoğraflar uygulamasında açtığınızda gerçekleşen indirmenin aynısıdır."
+          }
+        ]
+      },
+      { "type": "h2", "text": "Cihazınızda ne saklanır" },
+      {
+        "type": "p",
+        "text": "Compressive, uygulamayı nasıl ayarladığınızı hatırlayabilmek için iPhone'unuzdaki kendi alanında az miktarda bilgi tutar:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Ayarlarınız — kalite ön ayarı, çıktı biçimi, ızgara yoğunluğu, sıralama, görünüm, sıkıştırma sonrası orijinallere ne olacağı",
+          "İncelemenizi bekleyen sıkıştırılmış kopyalar — uygulamanın onları orijinalleriyle eşleştirebilmesi için",
+          "Toplamda ne kadar yer kazandığınız",
+          "Tanıtımı görüp görmediğiniz"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Bunların tamamı cihazınızda kalır ve uygulamayı sildiğinizde tamamı silinir. Hiçbiri sizi tanımlamaz."
+      },
+      { "type": "h2", "text": "Satın almalar" },
+      {
+        "type": "p",
+        "text": "Compressive Pro, Apple'ın App Store'u üzerinden satılır. Ödemeyi Apple yürütür ve uygulamaya tek bir şey söyler: bu Apple Hesabı'nın Pro hakkı var mı, yok mu. Adınızı, e-posta adresinizi, ödeme yönteminizi veya kart bilgilerinizi hiçbir zaman almayız — Apple bunları geliştiricilerle paylaşmaz. Bu işlem Apple'ın kendi gizlilik politikasına tabidir."
+      },
+      { "type": "h2", "text": "Analitik, reklam ve takip" },
+      {
+        "type": "p",
+        "text": "Hiçbiri yok. Compressive'in içinde analitik kütüphanesi, reklam kütüphanesi, çökme raporlayıcı veya herhangi bir üçüncü taraf SDK bulunmaz. Hangi düğmelere bastığınızın veya hangi videolara sahip olduğunuzun kaydını biz dahil kimse almaz."
+      },
+      { "type": "h2", "text": "Çocuklar" },
+      {
+        "type": "p",
+        "text": "Compressive çocuklara yönelik değildir ve hiçbir yaştan hiç kimseden kişisel bilgi toplamaz."
+      },
+      { "type": "h2", "text": "Bu politikadaki değişiklikler" },
+      {
+        "type": "p",
+        "text": "Compressive'in ileriki bir sürümü bu sayfanın anlatmadığı bir şey yaparsa, o sürüm yayınlanmadan önce bu sayfa güncellenecek ve yukarıdaki tarih değişecektir."
+      },
+      { "type": "h2", "text": "İletişim" },
+      {
+        "type": "p",
+        "text": "Bu politika veya uygulama hakkındaki sorularınız için: [support@compressive.app](mailto:support@compressive.app)"
+      }
+    ]
+  }
+}
