@@ -1,0 +1,78 @@
+/* App Store chrome, approximated in HTML around the real images. Every class is .as-* scoped. */
+.as-device-frame { margin: 0; zoom: .78; }
+.as-device-frame figcaption { justify-content: center; font-size: 13px; }
+.as-screen {
+  --bg: #fff; --ink: #000; --muted: #8a8a8e; --line: #e3e3e8; --fill: #eef0f4; --blue: #0a84ff; --field: #eeeef0;
+  position: relative; width: 440px; height: 956px; overflow: hidden; border-radius: 62px;
+  background: var(--bg); color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  box-shadow: 0 0 0 11px #1d1d1f, 0 0 0 12px #59595b, 0 30px 60px rgba(0,0,0,.18);
+}
+.dark .as-screen { --bg: #000; --ink: #fff; --muted: #98989f; --line: #2c2c2e; --fill: #1c1c1e; --field: #1c1c1e; }
+
+.as-status { height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 0 38px 0 52px; font-weight: 600; font-size: 17px; }
+.as-island { position: absolute; left: 50%; top: 14px; width: 126px; height: 37px; margin-left: -63px; background: #000; border-radius: 20px; }
+.as-bars { display: flex; align-items: flex-end; gap: 2px; }
+.as-bars i { width: 3px; background: var(--ink); border-radius: 1px; }
+.as-bars i:nth-child(1) { height: 4px } .as-bars i:nth-child(2) { height: 6px } .as-bars i:nth-child(3) { height: 8px } .as-bars i:nth-child(4) { height: 10px }
+.as-bars b { width: 25px; height: 12px; margin-left: 6px; border: 1.5px solid var(--ink); border-radius: 4px; opacity: .9; }
+
+.as-icon { width: var(--s); height: var(--s); flex: none; border-radius: calc(var(--s) * .225); overflow: hidden;
+  background: linear-gradient(160deg, #fbfdff, #e3ecf8); box-shadow: inset 0 0 0 .5px rgba(0,0,0,.12); }
+.as-icon img { width: 100%; height: 100%; display: block; }
+.as-icon.blank { background: var(--fill); box-shadow: none; }
+
+.as-get { flex: none; min-width: 74px; height: 30px; border-radius: 15px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; }
+.as-get.grey { background: var(--fill); color: var(--blue); }
+.as-get.blue { background: var(--blue); color: #fff; }
+
+/* Search */
+.as-search-head { display: flex; align-items: center; gap: 12px; padding: 6px 20px 14px; }
+.as-field { flex: 1; height: 38px; border-radius: 11px; background: var(--field); display: flex; align-items: center; gap: 8px; padding: 0 10px; font-size: 17px; }
+.as-glass { width: 14px; height: 14px; border: 2px solid var(--muted); border-radius: 50%; }
+.as-cancel { color: var(--blue); font-size: 17px; }
+.as-result { padding: 4px 20px 18px; border-bottom: .5px solid var(--line); margin-bottom: 14px; }
+.as-result.ghost { opacity: .45; border: 0; }
+.as-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.as-meta { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.as-meta strong { font-size: 17px; font-weight: 600; }
+.as-meta span, .as-meta em { font-size: 13px; color: var(--muted); font-style: normal; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.as-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.as-trio img { width: 100%; aspect-ratio: 1320 / 2868; border-radius: 12px; box-shadow: 0 0 0 .5px var(--line); display: block; }
+
+/* Product page */
+.as-nav { height: 44px; display: flex; align-items: center; padding: 0 16px; color: var(--blue); font-size: 17px; }
+.as-scroll { height: calc(956px - 62px - 44px - 84px); overflow-y: auto; scrollbar-width: none; }
+.as-scroll::-webkit-scrollbar { display: none; }
+.as-head { display: flex; gap: 18px; padding: 6px 20px 18px; }
+.as-titles { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.as-titles h3 { margin: 4px 0 2px; font-size: 24px; font-weight: 700; letter-spacing: -.3px; }
+.as-titles p { margin: 0; font-size: 15px; color: var(--muted); }
+.as-actions { margin-top: auto; display: flex; align-items: center; gap: 10px; }
+.as-iap { font-size: 9px; line-height: 1.15; color: var(--muted); }
+.as-share { margin-left: auto; width: 18px; height: 22px; border: 2px solid var(--blue); border-top: 0; border-radius: 0 0 3px 3px; position: relative; }
+.as-share::before { content: ""; position: absolute; left: 6px; top: -8px; width: 2px; height: 14px; background: var(--blue); }
+.as-info { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0 20px 20px; padding: 12px 0; border-top: .5px solid var(--line); border-bottom: .5px solid var(--line); }
+.as-info div { display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; border-left: .5px solid var(--line); }
+.as-info div:first-child { border-left: 0; }
+.as-info small { font-size: 10px; color: var(--muted); letter-spacing: .2px; }
+.as-info b { font-size: 19px; font-weight: 700; color: var(--muted); }
+.as-info b.glyph { font-size: 17px; }
+.as-carousel { display: flex; gap: 10px; overflow-x: auto; padding: 0 20px; scroll-snap-type: x mandatory; scroll-padding: 20px; scrollbar-width: none; }
+.as-carousel::-webkit-scrollbar { display: none; }
+.as-carousel img { flex: none; width: 236px; aspect-ratio: 1320 / 2868; border-radius: 20px; box-shadow: 0 0 0 .5px var(--line); scroll-snap-align: start; display: block; }
+.as-device { display: flex; align-items: center; gap: 6px; margin: 12px 20px 18px; font-size: 13px; color: var(--muted); }
+.as-phone-glyph { width: 9px; height: 14px; border: 1.5px solid var(--muted); border-radius: 2px; }
+.as-desc { margin: 0 20px; padding-top: 16px; border-top: .5px solid var(--line); font-size: 15px; line-height: 1.4; }
+.as-desc p { margin: 0 0 10px; }
+.as-more { color: var(--blue); }
+
+.as-tabs { position: absolute; left: 0; right: 0; bottom: 0; height: 84px; display: flex; justify-content: space-around; padding: 8px 6px 0;
+  background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(20px); border-top: .5px solid var(--line); }
+.as-tabs span { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10px; color: var(--muted); }
+.as-tabs i { width: 24px; height: 24px; border-radius: 7px; background: currentColor; opacity: .35; }
+.as-tabs span.on { color: var(--blue); }
+.as-tabs span.on i { opacity: 1; }
+
+@media (max-width: 1000px) { .as-device-frame { zoom: .62; } #store-stage { gap: 24px; } }
+@media (max-width: 520px) { .as-device-frame { zoom: .74; } }

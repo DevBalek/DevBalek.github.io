@@ -27,7 +27,13 @@ h2 { font-size:24px; letter-spacing:-.02em; margin:0 0 4px; }
 .row span { display:block; font-size:12px; color:var(--muted); margin-top:6px; }
 footer { color:var(--muted); font-size:13px; border-top:.5px solid var(--rule); padding-top:16px; }
 a { color:var(--link); }
+.stores { display:flex; flex-wrap:wrap; gap:28px 40px; }
+.store-set h3 { font-size:17px; margin:0 0 12px; }
+.store-pair { display:flex; flex-wrap:wrap; gap:28px; }
+.as-device-frame figcaption { display:block; text-align:center; color:var(--muted); margin-top:14px; }
+.note { color:var(--muted); font-size:13px; max-width:640px; margin:0 0 20px; }
 </style>
+<link rel="stylesheet" href="store.css">
 </head>
 <body>
 <div class="wrap">
@@ -36,6 +42,10 @@ a { color:var(--link); }
   <div class="bar"><div class="seg" role="group" aria-label="Görünüm"><button data-t="acik" aria-pressed="true">Açık</button><button data-t="koyu" aria-pressed="false">Koyu</button></div></div>
   <section><h2>Vurgusuz</h2><p class="sub">Ekran görüntüleri olduğu gibi.</p><div class="row" data-set="vurgusuz"></div></section>
   <section><h2>Vurgulu</h2><p class="sub">Her ekranda hikâyeyi taşıyan parça büyüyüp hafifçe eğiliyor.</p><div class="row" data-set="vurgulu"></div></section>
+  <section><h2>Mağazada</h2><p class="sub">Aynı görseller App Store'da: arama sonucunda ilk üçü, ürün sayfasında hepsi yana kaydırılarak.</p>
+    <p class="note">App Store arayüzü HTML ile yaklaşık çizildi, birebir değil. Ad dışındaki metinler (alt başlık, açıklama) taslak. Ürün sayfasındaki görsel şeridi parmakla ya da trackpad'le kaydırılır.</p>
+    <div class="stores"><div class="store-set"><h3>Vurgusuz</h3><div class="store-pair" data-store="vurgusuz"></div></div><div class="store-set"><h3>Vurgulu</h3><div class="store-pair" data-store="vurgulu"></div></div></div>
+  </section>
   <footer>Görseller App Store'da durağan PNG olarak görünür. Bu sayfa paylaşım içindir, hiçbir yerden bağlantı verilmez.</footer>
 </div>
 <script>
@@ -45,6 +55,30 @@ function render(t) {
     row.innerHTML = shots.map(([f, n]) => `<a href="${row.dataset.set}/${f}-${t}.png" target="_blank" rel="noopener"><img src="${row.dataset.set}/${f}-${t}.png" alt="${n}" loading="lazy" width="1320" height="2868"><span>${n}</span></a>`).join('');
   });
   document.querySelectorAll('[data-t]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === t)));
+  document.querySelectorAll('[data-store]').forEach(el => { el.innerHTML = store(el.dataset.store, t); });
+}
+/* The App Store around the images (same chrome as the studio's 05 / Mağaza). */
+const app = {name:'Compressive', subtitle:'Videoları küçült, yer aç', promo:'Depolamanı boşalt. Videoların kalsın.',
+  body:'Videolarını görünür kalite kaybı olmadan küçült. Hepsi iPhone’unda işlenir; hiçbir şey cihazından çıkmaz. Orijinali silmek her zaman senin kararın.'};
+const icon = size => `<div class="as-icon" style="--s:${size}px"><img src="app-icon.png" alt=""></div>`;
+const status = `<div class="as-status"><span>09:41</span><span class="as-island"></span><span class="as-bars"><i></i><i></i><i></i><i></i><b></b></span></div>`;
+const tabbar = `<nav class="as-tabs">${['Bugün','Oyunlar','Uygulamalar','Arcade','Ara'].map(x => `<span${x === 'Ara' ? ' class="on"' : ''}><i></i>${x}</span>`).join('')}</nav>`;
+function store(set, t) {
+  const src = f => `${set}/${f}-${t}.png`;
+  const search = `<div class="as-screen">${status}
+    <div class="as-search-head"><div class="as-field"><span class="as-glass"></span>video sıkıştır</div><span class="as-cancel">Vazgeç</span></div>
+    <div class="as-result"><div class="as-row">${icon(64)}<div class="as-meta"><strong>${app.name}</strong><span>${app.subtitle}</span><em>Fotoğraf ve Video</em></div><span class="as-get grey">Al</span></div>
+      <div class="as-trio">${shots.slice(0, 3).map(([f]) => `<img src="${src(f)}" alt="" loading="lazy">`).join('')}</div></div>
+    <div class="as-result ghost"><div class="as-row"><div class="as-icon blank" style="--s:64px"></div><div class="as-meta"><strong>Başka bir uygulama</strong><span>Arama sonucunda sıradaki</span></div><span class="as-get grey">Al</span></div></div>
+    ${tabbar}</div>`;
+  const product = `<div class="as-screen">${status}<div class="as-nav"><span>‹ Ara</span></div><div class="as-scroll">
+    <header class="as-head">${icon(118)}<div class="as-titles"><h3>${app.name}</h3><p>${app.subtitle}</p><div class="as-actions"><span class="as-get blue">Al</span><span class="as-iap">Uygulama İçi<br>Satın Alma</span><span class="as-share"></span></div></div></header>
+    <div class="as-info"><div><small>DEĞERLENDİRME</small><b>Yeni</b><small>Yeterli puan yok</small></div><div><small>YAŞ</small><b>4+</b><small>Yaş</small></div><div><small>KATEGORİ</small><b class="glyph">▶︎</b><small>Fotoğraf ve Video</small></div><div><small>DİL</small><b>TR</b><small>+ 1 Daha</small></div></div>
+    <div class="as-carousel">${shots.map(([f]) => `<img src="${src(f)}" alt="" loading="lazy">`).join('')}</div>
+    <p class="as-device"><span class="as-phone-glyph"></span>iPhone</p>
+    <div class="as-desc"><p><b>${app.promo}</b></p><p>${app.body}</p><span class="as-more">devamı</span></div></div>${tabbar}</div>`;
+  const look = t === 'koyu' ? 'dark' : 'light';
+  return `<figure class="as-device-frame ${look}">${search}<figcaption>Arama sonucu</figcaption></figure><figure class="as-device-frame ${look}">${product}<figcaption>Ürün sayfası</figcaption></figure>`;
 }
 document.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => render(b.dataset.t)));
 render(matchMedia('(prefers-color-scheme: dark)').matches ? 'koyu' : 'acik');
